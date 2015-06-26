@@ -21,14 +21,27 @@ public class ScanningDirectory {
         for (File file : list) {
             if (file.isFile()) {
                 String extension = "";
-                extension = file.toString().substring(file.toString().lastIndexOf(".") + 1);
+                extension = (file.toString().substring(file.toString().lastIndexOf(".") + 1)).toLowerCase();
                 System.out.println(extension);
                 if (hm.containsKey(extension)) {
                     int tempo = 0;
                     tempo = hm.get(extension);
                     tempo = tempo + 1;
                     hm.put(extension, tempo);
-                } else {
+                }
+                else if(extension.contains("/")) {
+                    if(hm.containsKey("No count")) {
+                    int tempo = 0;
+                    tempo = hm.get("No count");
+                    tempo = tempo + 1;
+                    hm.put("No count", tempo);    
+                    }
+                    else {
+                        hm.put("No count", 1);
+                    }
+                    
+                }
+                else {
                     hm.put(extension, 1);
                 }
             } else if (file.isDirectory()) {

@@ -20,11 +20,11 @@ private static HashMap<String, Integer> hm = new HashMap();
     public static void numberOfFiles(File directory) {
         File[] list = directory.listFiles();
         for (File file : list) {
-            
-            String extension = file.toString().substring(file.toString().lastIndexOf(".") + 1);
-            String fileName = file.getName().substring(0, file.getName().lastIndexOf(".")+1);
-            String tempo = file.getName();
-            System.out.println(fileName + "->" + extension);
+//            
+//            String extension = file.toString().substring(file.toString().lastIndexOf(".") + 1);
+//            String fileName = file.getName().substring(0, file.getName().lastIndexOf(".")+1);
+//            String tempo = file.getName();
+//            System.out.println(fileName + "->" + extension);
             int i = 0;
             
             if (file.isFile()) {
