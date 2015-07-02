@@ -92,7 +92,7 @@ public class MappingHeaders {
         System.out.println("Input CSV File: ");
         String source1 = sc.nextLine();
 
-        System.out.println("Input JSON File: ");
+        System.out.println("config File: ");
         String source2 = sc.nextLine();
 
         System.out.println("Output CSV File: ");

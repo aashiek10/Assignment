@@ -24,8 +24,7 @@ import org.apache.commons.csv.CSVRecord;
 public class RemovingDuplicateEntries {
     
     private void remove(CSVParser parser, CSVPrinter printer) throws Exception {
-        boolean isHeader = true;
-        
+            
         List<String> list = new ArrayList();
         for (CSVRecord record : parser) {
             String tempo = "";
