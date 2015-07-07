@@ -40,18 +40,19 @@ public class Amountediting {
                 isHeader = false;
                 continue;
             }
-            int tempo = 0;
-            float tempo2 = 0;
+            int tempo;
+            float tempo2;
             tempo = Integer.parseInt(s[amountColumnIndex]);
-            tempo2 = tempo / 100;
+            tempo2 = ((float) tempo) / 100;
             s[amountColumnIndex] = Float.toString(tempo2);
 
             tempo = Integer.parseInt(s[refundColumnIndex]);
-            tempo2 = tempo / 10;
+            tempo2 = ((float) tempo) / 10;
             s[refundColumnIndex] = Float.toString(tempo2);
 
             tempo = Integer.parseInt(s[taxColumnIndex]);
-            tempo2 = tempo / 100;
+            tempo2 = ((float) tempo) / 100;
+            System.out.println(tempo2);
             s[taxColumnIndex] = Float.toString(tempo2);
 
             MethodBank.print(printer, s);

@@ -5,42 +5,40 @@
  */
 package com.chargebee.CSV.PhoneBook.PhoneBook2;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author cb-aashiek
  */
 public class Phone {
-    ArrayList<String> mobileNumber = new ArrayList();
-    ArrayList<String> homeNumber = new ArrayList();
-    ArrayList<String> workNumber = new ArrayList();
+    String mobileNumber = new String();
+    String homeNumber = new String();
+    String workNumber = new String();
 
-    public ArrayList<String> getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(ArrayList<String> mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
-    public ArrayList<String> getHomeNumber() {
+    public String getHomeNumber() {
         return homeNumber;
     }
 
-    public void setHomeNumber(ArrayList<String> homeNumber) {
+    public void setHomeNumber(String homeNumber) {
         this.homeNumber = homeNumber;
     }
 
-    public ArrayList<String> getWorkNumber() {
+    public String getWorkNumber() {
         return workNumber;
     }
 
-    public void setWorkNumber(ArrayList<String> workNumber) {
+    public void setWorkNumber(String workNumber) {
         this.workNumber = workNumber;
     }
     
-    public Phone(ArrayList<String> mobileNumber,ArrayList<String> homeNumber,ArrayList<String> workNumber) {
+    public Phone(String mobileNumber,String homeNumber,String workNumber) {
         this.homeNumber = homeNumber;
         this.workNumber = workNumber;
         this.homeNumber = homeNumber;

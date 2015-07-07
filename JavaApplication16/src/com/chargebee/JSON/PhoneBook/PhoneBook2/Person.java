@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.chargebee.CSV.PhoneBook.PhoneBook2;
+package com.chargebee.JSON.PhoneBook.PhoneBook2;
+
+import com.chargebee.CSV.PhoneBook.PhoneBook2.*;
 
 /**
  *

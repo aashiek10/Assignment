@@ -40,7 +40,7 @@ public class DateFormat {
 
             String dateToPrint = "";
             SimpleDateFormat simpleDateFormatInput = new SimpleDateFormat(date_format);
-            SimpleDateFormat simpleDateFormatOutput = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat simpleDateFormatOutput = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
             if (record.get(columnIndex) != null && !record.get(columnIndex).equals("")) {
                 Date date = simpleDateFormatInput.parse(record.get(columnIndex));

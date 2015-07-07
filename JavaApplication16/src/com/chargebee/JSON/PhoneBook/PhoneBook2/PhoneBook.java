@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.chargebee.CSV.PhoneBook.PhoneBook2;
+package com.chargebee.JSON.PhoneBook.PhoneBook2;
 
-import java.io.FileReader;
+import static com.chargebee.MethodBank.MethodBank.readJsonArrayData;
+import com.chargebee.org.json.JSONArray;
+import com.chargebee.org.json.JSONException;
+import com.chargebee.org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 
 /**
  *
@@ -21,19 +21,20 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class PhoneBook {
 
-    private void directory(CSVParser parser) {
+    private void directory(JSONArray jarr) throws JSONException {
         HashMap<String, ArrayList> map = new HashMap();
-        for (CSVRecord record : parser) {
+        for(int i = 0; i < jarr.length(); ++i) {
+            JSONObject jobj = jarr.getJSONObject(i);
             ArrayList<Person> person = new ArrayList();
-            Person p = new Person(record.get("Name"), record.get("Address"), new Phone(record.get("Mobile"), record.get("Home"), record.get("Work")));
-            if (!map.containsKey(record.get("Name"))) {
+            Person p = new Person(jobj.getString("Name"),jobj.getString("Address"), new Phone(jobj.getJSONArray("Mobile"),jobj.getJSONArray("Home"), jobj.getJSONArray("Work")));
+            if (!map.containsKey(jobj.getString("Name"))) {
                 person.add(p);
-                map.put(record.get("Name"), person);
+                map.put(jobj.getString("Name"), person);
                 continue;
             }
-            person = map.get(record.get("Name"));
+            person = map.get(jobj.getString("Name"));
             person.add(p);
-            map.put(record.get("Name"), person);
+            map.put(jobj.getString("Name"), person);
         }
         display(map);
     }
@@ -61,7 +62,7 @@ public class PhoneBook {
                 ArrayList<Person> tempo = new ArrayList();
                 tempo = entry.getValue();
                 for (Person p : tempo) {
-                    if (p.getPhone().getHomeNumber().equalsIgnoreCase(param) || p.getPhone().getMobileNumber().equalsIgnoreCase(param) || p.getPhone().getWorkNumber().equalsIgnoreCase(param)) {
+                    if (p.getPhone().getHomeNumber().contains(param) || p.getPhone().getMobileNumber().contains(param) || p.getPhone().getWorkNumber().contains(param)) {
                         p.print();
                         break;
                     }
@@ -74,14 +75,11 @@ public class PhoneBook {
     }
 
     public static void main(String[] args) throws IOException, Exception {
-        String source = System.getProperty("user.home") + "/input2.csv";
+        String source = System.getProperty("user.home") + "/input.json";
 
         PhoneBook pb = new PhoneBook();
-
-        CSVParser parser = new CSVParser(new FileReader(source), CSVFormat.EXCEL.withHeader());
-
-        pb.directory(parser);
-        parser.close();
+        JSONArray jarr = readJsonArrayData(source);
+        pb.directory(jarr);
 
     }
 }
