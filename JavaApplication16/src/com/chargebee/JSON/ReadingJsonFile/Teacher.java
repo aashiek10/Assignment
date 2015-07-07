@@ -5,66 +5,42 @@
  */
 package com.chargebee.JSON.ReadingJsonFile;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cb-aashiek
  */
-public class Teacher {
+public class Teacher extends Person {
 
-    private String name;
-    private String salary;
-    private String joiningDate;
-    private String id;
-    private String[] classesHandled = new String[3];
+    private Float salary;
+    private ArrayList<String> classesHandled = new ArrayList();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSalary() {
+   
+    public Float getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(Float salary) {
         this.salary = salary;
     }
 
-    public String getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(String joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String[] getClassesHandled() {
+    public ArrayList<String> getClassesHandled() {
         return classesHandled;
     }
 
-    public void setClassesHandled(String[] classesHandled) {
+    public void setClassesHandled(ArrayList<String> classesHandled) {
         this.classesHandled = classesHandled;
     }
 
     public void print() {
-        System.out.println("Name: " + this.name);
+        System.out.println("Name: " + super.getName());
         System.out.println("Salary: " + this.salary);
-        System.out.println("ID: " + this.id);
-        System.out.println("Joining Date: " + this.joiningDate);
+        System.out.println("ID: " + super.getId());
+        System.out.println("Joining Date: " + super.getJoiningDate());
         System.out.println("Classes Handled: ");
-        for (int i = 0; i < 3; ++i) {
-            System.out.println(this.classesHandled[i]);
+        for (int i = 0; i <classesHandled.size(); ++i) {
+            System.out.println(this.classesHandled.get(i));
         }
 
     }

@@ -9,55 +9,61 @@ import static com.chargebee.MethodBank.MethodBank.readJsonObjectData;
 import com.chargebee.org.json.JSONArray;
 import com.chargebee.org.json.JSONException;
 import com.chargebee.org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
  * @author cb-aashiek
  */
 public class Details {
-    
-    public void processor(JSONObject jobj, Student student, Teacher teacher) throws JSONException {
 
-        student.setJoiningDate(jobj.getJSONObject("Student").getString("Date Of Joining"));
-        student.setId(jobj.getJSONObject("Student").getString("ID"));
-        student.setName(jobj.getJSONObject("Student").getString("Name"));
-        student.setStandard(jobj.getJSONObject("Student").getString("Std"));
+    public static void processor(JSONObject jobj) throws JSONException {
+        Iterator iterator = jobj.keys();
 
-        String[] tempo1 = new String[5];
-        String[] tempo2 = new String[5];
+        while (iterator.hasNext()) {
+            String key = (String) iterator.next();
+            if (key.toLowerCase().equalsIgnoreCase("student")) {
+                Student s = new Student();
+                ArrayList<Marks> list = new ArrayList();
+                s.setName(jobj.getJSONObject(key).getString("Name"));
+                s.setId(jobj.getJSONObject(key).getString("ID"));
+                s.setJoiningDate(jobj.getJSONObject(key).getString("Date Of Joining"));
+                s.setStandard(jobj.getJSONObject(key).getString("Std"));
+                JSONArray tempo = jobj.getJSONObject(key).getJSONArray("Marks");
 
-        JSONArray arrayStudent = jobj.getJSONObject("Student").getJSONArray("Marks");
-        for (int i = 0; i < arrayStudent.length(); i++) {
-            tempo1[i] = arrayStudent.getJSONObject(i).getString("Mark");
-            tempo2[i] = arrayStudent.getJSONObject(i).getString("Subject");
+                for (int i = 0; i < tempo.length(); i++) {
+                    JSONObject tempoObj = tempo.getJSONObject(i);
+                    list.add(new Marks(Float.parseFloat(tempoObj.getString("Mark")), tempoObj.getString("Subject")));
+                }
+                s.setMarks(list);
+                s.print();
+                System.out.println();
+            } else if (key.toLowerCase().equalsIgnoreCase("teacher")) {
+                Teacher t = new Teacher();
+                ArrayList<String> list = new ArrayList();
+                t.setName(jobj.getJSONObject(key).getString("Name"));
+                t.setId(jobj.getJSONObject(key).getString("ID"));
+                t.setJoiningDate(jobj.getJSONObject(key).getString("Date Of Joining"));
+                t.setSalary(Float.parseFloat(jobj.getJSONObject(key).getString("Salary")));
+
+                JSONArray tempo = jobj.getJSONObject(key).getJSONArray("Classes Taking Care Of");
+
+                for (int i = 0; i < tempo.length(); i++) {
+                    list.add(tempo.getString(i));
+                }
+                t.setClassesHandled(list);
+                t.print();
+                System.out.println();
+            }
         }
-        student.setMarks(tempo1);
-        student.setSubject(tempo2);
-        
-        teacher.setId(jobj.getJSONObject("Teacher").getString("ID"));
-        teacher.setName(jobj.getJSONObject("Teacher").getString("Name"));
-        teacher.setSalary(jobj.getJSONObject("Teacher").getString("Salary"));
-        teacher.setJoiningDate(jobj.getJSONObject("Teacher").getString("Date Of Joining"));
 
-        JSONArray arrayTeacher = jobj.getJSONObject("Teacher").getJSONArray("Classes Taking Care Of");
-        String[] tempo3 = new String[3];
-        for (int i = 0; i < arrayTeacher.length(); i++) {
-            tempo3[i] = arrayTeacher.getString(i);
-        }
-        teacher.setClassesHandled(tempo3);
     }
 
     public static void main(String[] args) throws Exception {
         String source = System.getProperty("user.home") + "/input.json";
 
-        Details d = new Details();
-        Student s = new Student();
-        Teacher t = new Teacher();
-
         JSONObject jobj = readJsonObjectData(source);
-        d.processor(jobj, s, t);
-        s.print();
-        System.out.println();
-        t.print();
+        processor(jobj);
     }
 }

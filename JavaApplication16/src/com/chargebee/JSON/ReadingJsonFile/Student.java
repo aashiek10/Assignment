@@ -5,34 +5,17 @@
  */
 package com.chargebee.JSON.ReadingJsonFile;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cb-aashiek
  */
-public class Student {
-    private String name;
+public class Student extends Person {
+    
     private String standard;
-    private String joiningDate;
-    private String id;
-    private String [] marks = new String[5];
-    private String [] subject = new String[5];
-
-    public String[] getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String[] subject) {
-        this.subject = subject;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    private ArrayList<Marks> marks = new ArrayList();
+    
     public String getStandard() {
         return standard;
     }
@@ -41,38 +24,21 @@ public class Student {
         this.standard = standard;
     }
 
-    public String getJoiningDate() {
-        return joiningDate;
-    }
-
-    public void setJoiningDate(String joiningDate) {
-        this.joiningDate = joiningDate;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String[] getMarks() {
+    public ArrayList<Marks> getMarks() {
         return marks;
     }
 
-    public void setMarks(String[] marks) {
+    public void setMarks(ArrayList<Marks> marks) {
         this.marks = marks;
     }
     
     public void print() {
-        System.out.println("Name: " + this.name);
+        System.out.println("Name: " + super.getName());
         System.out.println("Standard: " + this.standard);
-        System.out.println("ID: " + this.id);
-        System.out.println("Joining Date: " + this.joiningDate);
-        for(int i=0; i<5; ++i) {
-            System.out.println("Subject: " + this.subject[i]);
-            System.out.println("Marks: " + this.marks[i]);
-        }
+        System.out.println("ID: " + super.getId());
+        System.out.println("Joining Date: " + super.getJoiningDate());
+        for(int i=0; i<marks.size(); ++i) 
+           marks.get(i).print();
+        
     }
 }
