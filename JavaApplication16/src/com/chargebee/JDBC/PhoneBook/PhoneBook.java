@@ -77,13 +77,13 @@ public class PhoneBook {
         String param = sc.nextLine();
 
         if (choice.toLowerCase().equalsIgnoreCase("name")) {
-            int i = 0;
+            int i = 0, j=0;
             for (String value : mapName.values()) {
                 i++;
                 if (value.toLowerCase().contains(param)) {
                     String tempo = "SELECT * FROM phone_book WHERE id = " + i;
                     ResultSet result = statement.executeQuery(tempo);
-                    while (result.next()) {
+                    while (result.next()) {System.out.println(j++);
                         System.out.println("ID : " + result.getInt("id"));
                         System.out.println("Name : "+result.getString("name"));
                         System.out.println("Address : " + result.getString("address"));
