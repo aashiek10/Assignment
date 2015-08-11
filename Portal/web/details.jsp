@@ -16,15 +16,41 @@ and open the template in the editor.
         
         <%
        ResultSet rs=(ResultSet) request.getAttribute("resultObject");
-       /*out.println("ID : " + rs.getString(1));
-       out.println("First Name : " + rs.getString("first_name"));
-       out.println("Last Name : " + rs.getString("last_name"));
-       out.println("Email ID : " + rs.getString("e_mail"));
-       out.println("Address : " + rs.getString("address"));
-.        */%>
-        <h1><%= rs.getString("first_name")%> </h1>
-        <form method="post" action="editDetails">
-                <button type="submit">Edit</button>
+       while(rs.next()) { %>
+            <div>
+                <form method="post" action="UpdateDetails">
+                    
+                <label>ID:</label><input type="text" readonly="" id="id" name="id" value="<%=rs.getString("id")%>"/><br>
+                <label>First Name:</label><input type="text" readonly="true" id="fname" name="fname" value="<%=rs.getString("first_name")%>"/><br>
+                <label>Last Name:</label><input type="text" readonly="true" id="lname" name="lname" value="<%=rs.getString("last_name")%>"/><br>
+                <label>E-mail:</label><input type="text" readonly="" id="email" name="email" value="<%=rs.getString("e_mail")%>"/><br>
+                <label>Address:</label><input type="text" readonly="true" id="address" name="address" size="50" value="<%=rs.getString("address")%>"/><br>
+                <button type="submit" disabled="true" id="apply">Apply</button>
+                </form>
+                <button onclick ="redirect()" disabled="true" id="cancel">Cancel</button>
+                </div>
+                <%}%>
+                
+      
+
+                <button onclick="enableEdit()">Edit</button>
+                <script>
+             function enableEdit() {
+             document.getElementById("fname").removeAttribute("readonly"); 
+             document.getElementById("lname").removeAttribute("readonly");
+             document.getElementById("address").removeAttribute("readonly");
+             document.getElementById("apply").removeAttribute("disabled");
+             document.getElementById("cancel").removeAttribute("disabled");
+         }
+         function redirect() {
+          window.location.href = "DisplayDetails";   
+         }
+
+                </script>
+
+
+                <form method="get" action="logout">
+                    <button type="logout">Logout</button>
         </form>
         
         <div></div>

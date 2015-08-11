@@ -13,6 +13,13 @@ and open the template in the editor.
     
     <body>
         
+        <% 
+        if (request.getSession().getAttribute("userId")==null) { 
+              response.sendRedirect("login.jsp"); %>
+              <h1>Please Login!</h1>
+              <%}
+        %>
+        
         <form method="get" action="DisplayDetails">
             <button type="submit">Details</button>
         </form>

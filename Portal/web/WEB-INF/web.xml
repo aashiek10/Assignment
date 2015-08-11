@@ -20,6 +20,10 @@
         <servlet-name>DisplayDetails</servlet-name>
         <servlet-class>DisplayDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateDetails</servlet-name>
+        <servlet-class>UpdateDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignupProcess</servlet-name>
         <url-pattern>/signupProcessor</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>DisplayDetails</servlet-name>
         <url-pattern>/DisplayDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateDetails</servlet-name>
+        <url-pattern>/UpdateDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

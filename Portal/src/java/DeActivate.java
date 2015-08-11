@@ -43,6 +43,10 @@ public class DeActivate extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            if (request.getSession().getAttribute("userId")==null) { 
+              response.sendRedirect("login.jsp"); 
+              }
+            
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/user_info", "root", "");
 
