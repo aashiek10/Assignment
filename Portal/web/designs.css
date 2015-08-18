@@ -1,0 +1,42 @@
+.btn {
+  width: 135px;
+  height: 55px;
+  display: inline;
+    color: #fff;
+  text-shadow: none;
+  background-color: #FF0000;
+  box-shadow: inset 0 0 0 1px #27496d;
+  border: none;
+  border-radius: 3px;
+
+}
+
+.boxed {
+  border: 1px solid grey ;
+  box-sizing: 50px;
+}
+
+.fields {
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+}
+.fields :focus,
+.fields .focus {
+  border-bottom: solid 2px #969696;
+}
+
+form {
+    display: inline;
+}
+
+body {
+  text-align: center;
+ }
+
+#page-wrap {
+
+  width: 800px;
+  margin: 0 auto;
+}
