@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import utills.UserContact;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -58,17 +59,16 @@ public class FilterContacts extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/user_info", "root", "");
             if (!request.getParameter("name").equalsIgnoreCase("") && request.getParameter("name") != null) {
-                String filter = "SELECT * FROM phone_book WHERE name LIKE '%?%'";
+                String filter = "SELECT * FROM phone_book WHERE name LIKE '%"+ request.getParameter("name") +"%'";
                 PreparedStatement statement = connection.prepareStatement(filter);
-                statement.setString(1, request.getParameter("name"));
                 ResultSet result = statement.executeQuery();
 
-                ArrayList<BeanClass> list = new ArrayList();
+                ArrayList<UserContact> list = new ArrayList();
                 String[] names = {"mobile", "home", "work"};
 
                 while (result.next()) {
                     int id = result.getInt("id");
-                    BeanClass bc = new BeanClass();
+                    UserContact bc = new UserContact();
 
                     bc.setId(result.getString(1));
                     bc.setName(result.getString("name"));
@@ -110,17 +110,16 @@ public class FilterContacts extends HttpServlet {
                 res.next();
                 int id = res.getInt("id");
 
-                String tempo = "SELECT * FROM phone_book WHERE id = '?'";
+                String tempo = "SELECT * FROM phone_book WHERE id = '" + Integer.toString(id) +"'";
                 PreparedStatement statement = connection.prepareStatement(tempo);
-                statement.setString(1, Integer.toString(id));
 
                 ResultSet result = statement.executeQuery();
 
-                ArrayList<BeanClass> list = new ArrayList();
+                ArrayList<UserContact> list = new ArrayList();
                 String[] names = {"mobile", "home", "work"};
 
                 while (result.next()) {
-                    BeanClass bc = new BeanClass();
+                    UserContact bc = new UserContact();
 
                     bc.setId(result.getString(1));
                     bc.setName(result.getString("name"));

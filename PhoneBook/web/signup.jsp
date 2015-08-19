@@ -35,7 +35,7 @@ and open the template in the editor.
                 });
             });
         </script>
-
+<link rel="stylesheet" type="text/css" href="designs.css" media="screen" />
     </head>
 
     <body>
@@ -49,43 +49,54 @@ and open the template in the editor.
         <div style="width:400px; margin-right:auto; margin-left:auto; text-align:center;">
 
             <form action="signupProcessor" id="signupform" method="post">
-           <table style="width:40%">
+                <center>
+                    <div style="
+                     height: 375px;
+                     width: 300px;
+                     position: absolute;
+                     top:125px;
+                     margin: 0 auto;
+                     left:415px;">
+                        
+                <table style="width:40%">
+                 <h4>Register</h4>
+
                <tr>
             <div>
-                <td><label>First Name:</label></td>
-                <td><input type="text" id="first_name" name="first_name" required/></td>
+                <td><label></label></td>
+                <td><input type="text" id="first_name" class="signupField" name="first_name" value="First Name"  required onfocus="if (this.value==='First Name') this.value='';"/></td>
             </div>
-               </tr>
-               <tr>
+               
             <div>
-                <td><label>Last Name:</label></td>
-                <td><input type="text" id="last_name" name ="last_name" required/></td>
-            </div>
-               </tr><tr>
-            <div>
-               <td> <label>E-mail:</label></td>
-               <td> <input type="email" id="mail" name ="email" required/></td>
+                <td><label></label></td>
+                <td><input type="text" id="last_name" class="signupField" name ="last_name" value="Last Name" required onfocus="if (this.value==='Last Name') this.value='';"/></td>
             </div>
                </tr><tr>
             <div>
-                <td><label>Confirm E-mail:</label></td>
-                <td><input type="email" id="confirm_mail" name="emailconf" required/></td>
+               <td> <label></label></td>
+               <td> <input type="email" id="mail" class="signupField" name ="email" value="E-mail" required onfocus="if (this.value==='E-mail') this.value='';"/></td>
+            </div>
+            <div>
+                <td><label></label></td>
+                <td><input type="email" id="confirm_mail" class="signupField" name="emailconf" value="Confirm E-mail" required onfocus="if (this.value==='Confirm E-mail') this.value='';"/></td>
             </div>
                </tr><tr>
             <div>
-                <td><label>Password:</label></td>
-                <td><input type="password" pattern=".{5,10}" title ="Min 5, Max 10" id="password" name="password" required/></td>
+                <td><label></label></td>
+                <td><input type="password" pattern=".{5,10}" title ="Min 5, Max 10" id="password" value="Password" class="signupField" name="password" required/></td>
             </div>
-               </tr><tr>
+               
             <div>
-               <td> <label>Confirm Password:</label></td>
-               <td> <input type="password" pattern=".{5,10}" title ="Min 5, Max 10" id="confirm_password" name="passwordconf" required/></td>
+               <td> <label></label></td>
+               <td> <input type="password" pattern=".{5,10}" title ="Min 5, Max 10" id="confirm_password" value="Confirm Password" class="signupField" name="passwordconf" required/></td>
             </div>
                </tr>
            </table>
             <div class="button">
-                <button type="submit" id="submit">Submit</button>
+                <td height="100"><button class="btn" type="submit" id="submit">Submit</button></td>
             </div>
+                    </div>
+                    </center>
         </form>
             </div>
     </body>

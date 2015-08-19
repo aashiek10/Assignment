@@ -1,3 +1,5 @@
+<%@page import="utills.UserContact"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <!--
@@ -18,14 +20,13 @@ and open the template in the editor.
         if (request.getSession().getAttribute("userId")==null) { 
               response.sendRedirect("login.jsp"); %>
               <h1>Please Login!</h1>
-              <%}
+        <%}
         %>
         
               <%
-       ArrayList<BeanClass> list = new ArrayList();
-       list = (ArrayList) request.getAttribute("BCObjectList");
-       BeanClass b = new BeanClass();
-       for(BeanClass bc : list) { %>
+        
+       List<Object> list = (ArrayList) request.getAttribute("BCObjectList");   
+       for(Object b1 : list) {  UserContact bc=(UserContact)b1; %>
             <div>
                 <form>
                  <table style="width:55%">
@@ -50,17 +51,19 @@ and open the template in the editor.
                 </tr>
                   
                 
-                <%}%>
+              <%}%>
                 </table>
-                <button onclick="redirect1()">Edit Contact</button>
-                <button onclick="redirect2()">Filter Contact</button>
+                <input type="button" onclick="redirect1()" value="Edit Contact"/>
+                <button onclick="return redirect2()">Filter Contact</button>
                
                 <script>
                   function redirect1() {
-          window.location.href = "editContacts.jsp";   
+                      window.location.href = "editContacts.jsp";
+             
          }
          function redirect2() {             
-          window.location.href = "filterContacts.jsp";   
+          window.location.href = "filterContacts.jsp"; 
+          return false;
          }
                 </script>
 

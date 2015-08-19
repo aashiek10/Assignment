@@ -19,32 +19,20 @@ and open the template in the editor.
                  <table style="width:55%">
                 <tr>
                     <td><label>Name:</label></td>
-                    <td><input type="text" readonly="true" id="name" name="name" value=""/></td>
-                    <td><button type="submit" disabled="true" id="confirmn">Confirm</button></td>
+                    <td><input type="text" id="name" name="name" value=""/></td>
+                    <td><button type="submit" id="confirmn">Confirm</button></td>
                 </tr>
                 <tr>
                     <td><label>Phone:</label></td>
-                    <td><input type="text" readonly="true" id="phone" name="phone" value=""/></td>
-                    <td><button type="submit" disabled="true" id="confirmp">Confirm</button></td>
+                    <td><input type="text" id="phone" name="phone" value=""/></td>
+                    <td><button type="submit" id="confirmp">Confirm</button></td>
                 </tr>
                  </table> 
                 </form>
                 
                 </div>      
 <button onclick ="redirect()" id="cancel">Cancel</button>
-                <button onclick="enableName()">Name</button>
-                <button onclick="enablePhone()">Phone</button>
                 <script>
-             function enableName() {   
-             document.getElementById("name").removeAttribute("readonly"); 
-             document.getElementById("confirmn").removeAttribute("disabled");
-         }
-         
-             function enablePhone() {   
-             document.getElementById("phone").removeAttribute("readonly"); 
-             document.getElementById("confirmp").removeAttribute("disabled");
-         }
-        
     function redirect() {
           window.location.href = "filterContacts.jsp";   
          }

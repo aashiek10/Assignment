@@ -41,7 +41,7 @@ and open the template in the editor.
                 <tr>
                 <div>
                     <td><label></label></td>
-                    <td><input type="email" id="mail" name ="email" class="fields" value="<%=request.getParameter("email")==null?"Username":request.getParameter("email")%>"/></td>
+                    <td><input type="email" id="mail" name ="email" class="fields" value="<%=request.getParameter("email")==null?"Username":request.getParameter("email")%>" onfocus="if (this.value==='Username') this.value='';"/></td>
             </div>
 </tr>
 <tr>

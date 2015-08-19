@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import utills.UserContact;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -76,17 +77,16 @@ public class EditContacts extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/user_info", "root", "");
             if (!request.getParameter("idedit").equalsIgnoreCase("") && request.getParameter("idedit") != null) {
-                String filter = "SELECT * FROM phone_book WHERE name id = '?'";
+                String filter = "SELECT * FROM phone_book WHERE id = '" + request.getParameter("idedit") + "'";
                 PreparedStatement statement = connection.prepareStatement(filter);
-                statement.setString(1, request.getParameter("idedit"));
                 ResultSet result = statement.executeQuery();
 
-                ArrayList<BeanClass> list = new ArrayList();
+                ArrayList<UserContact> list = new ArrayList();
                 String[] names = {"mobile", "home", "work"};
 
                 while (result.next()) {
                     int id = result.getInt("id");
-                    BeanClass bc = new BeanClass();
+                    UserContact bc = new UserContact();
 
                     bc.setId(result.getString(1));
                     bc.setName(result.getString("name"));

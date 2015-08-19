@@ -25,7 +25,7 @@
         <servlet-class>UpdateDetails</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FetchDetails</servlet-name>
+        <servlet-name>FetchContacts</servlet-name>
         <servlet-class>FetchContacts</servlet-class>
     </servlet>
     <servlet>
@@ -35,6 +35,10 @@
     <servlet>
         <servlet-name>EditContacts</servlet-name>
         <servlet-class>EditContacts</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddContacts</servlet-name>
+        <servlet-class>AddContacts</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignupProcess</servlet-name>
@@ -61,7 +65,7 @@
         <url-pattern>/UpdateDetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FetchDetails</servlet-name>
+        <servlet-name>FetchContacts</servlet-name>
         <url-pattern>/FetchDetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>EditContacts</servlet-name>
         <url-pattern>/EditContacts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddContacts</servlet-name>
+        <url-pattern>/AddContacts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

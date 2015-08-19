@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import utills.UserContact;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -62,12 +63,12 @@ public class FetchContacts extends HttpServlet {
         statement.setString(1, request.getSession().getAttribute("userId").toString());
         ResultSet result = statement.executeQuery();
         
-        ArrayList<BeanClass> list = new ArrayList();
+        ArrayList<UserContact> list = new ArrayList();
         String[] names = {"mobile", "home", "work"};
         
             while (result.next()) {
                 int id = result.getInt("id");
-                BeanClass bc = new BeanClass();
+                UserContact bc = new UserContact();
                 
                 bc.setId(result.getString(1));
                 bc.setName(result.getString("name"));
@@ -79,7 +80,7 @@ public class FetchContacts extends HttpServlet {
                 ResultSet result2 = statement2.executeQuery(tempo);
                 String num = "";
                 while (result2.next()) {
-                 num = num + result2.getInt("number") + "  ";
+                 num = num + result2.getInt("number") + "         ";
         }
                 switch(s) {
                     case "mobile":
@@ -96,7 +97,7 @@ public class FetchContacts extends HttpServlet {
             list.add(bc);
         }
         
-             request.setAttribute("BCObjectList", list);
+             request.setAttribute("BCObjectList", list);   
              request.getRequestDispatcher("displayContacts.jsp").forward(request, response);
             
         } catch (Exception e) {

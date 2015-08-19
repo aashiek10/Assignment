@@ -1,3 +1,5 @@
+package utills;
+
 
 import java.io.Serializable;
 
@@ -11,7 +13,7 @@ import java.io.Serializable;
  *
  * @author cb-aashiek
  */
-public class BeanClass implements Serializable {
+public class UserContact {
 
     private String name;
     private String id;
