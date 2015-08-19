@@ -72,6 +72,7 @@ public class AddContacts extends HttpServlet {
             if (request.getSession().getAttribute("userId")==null) { 
               response.sendRedirect("login.jsp"); 
               }
+            
           String tempo = "UPDATE phone_book SET name=?, address=? WHERE id=? ";
             PreparedStatement statement=connection.prepareStatement(tempo);
             String address = request.getParameter("address") + " " + request.getParameter("address2") + " " + request.getParameter("state") + " " + request.getParameter("country");
@@ -80,6 +81,11 @@ public class AddContacts extends HttpServlet {
             statement.setString(3, request.getParameter("id3"));         
             statement.executeUpdate();
             
+            
+            String deletequery = "DELETE FROM mobile_number WHERE id = ?";
+            statement=connection.prepareStatement(deletequery);
+            statement.setString(1, request.getParameter("id3"));
+            statement.executeUpdate();
             
             String s = request.getParameter("mobilenum");
             if (s != null) {
@@ -91,6 +97,11 @@ public class AddContacts extends HttpServlet {
             statement.executeUpdate();
             }}
             
+            deletequery = "DELETE FROM work_number WHERE id = ?";
+            statement=connection.prepareStatement(deletequery);
+            statement.setString(1, request.getParameter("id3"));
+            statement.executeUpdate();
+            
             s = request.getParameter("worknum");
             if (s != null) {
             for (String retval : s.split(",")) {
@@ -100,6 +111,11 @@ public class AddContacts extends HttpServlet {
             statement.setString(2, retval);
             statement.executeUpdate();
             }}
+            
+            deletequery = "DELETE FROM home_number WHERE id = ?";
+            statement=connection.prepareStatement(deletequery);
+            statement.setString(1, request.getParameter("id3"));
+            statement.executeUpdate();
             
             s = request.getParameter("homenum");
             if (s != null) {
