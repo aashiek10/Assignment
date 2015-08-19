@@ -23,31 +23,49 @@ and open the template in the editor.
               <h1>Please Login!</h1>
         <%}
         %>
-        
+        <form>
+            <table class="tfTable" style="width:50%">
+                <tr>  
+                    <td><label></label></td>
+                    <td><%="ID"%></td>
+                    
+                    <td><label></label></td>
+                    <td><%="Name"%></td>
+                
+                    <td><label></label></td>
+                    <td><%="Address"%></td>
+                
+                    <td><label></label></td>
+                    <td><%="Home Number"%></td>
+                
+                    <td><label></label></td>
+                    <td><%="Work Number"%></td>
+                
+                    <td><label></label></td>
+                    <td><%="Mobile Number"%></td>
+                </tr>
+                  
               <%
-        
        List<Object> list = (ArrayList) request.getAttribute("BCObjectList");   
        for(Object b1 : list) {  UserContact bc=(UserContact)b1; %>
             <div>
-                <form>
-                 <table style="width:55%">
-                <tr>  
-                    <td><label>ID:</label></td>
-                    <td><input class="signupField" type="text" readonly="" id="id" name="id" value="<%=bc.getId()%>"/></td>
+                                <tr>  
+                    <td><label></label></td>
+                    <td><%=bc.getId()%></td>
                     
-                    <td><label>Name:</label></td>
+                    <td><label></label></td>
                     <td><input class="signupField" type="text" readonly id="name" name="name" value="<%=bc.getName()%>"/></td>
                 
-                    <td><label>Address:</label></td>
+                    <td><label></label></td>
                     <td><input class="signupField" type="text" readonly id="address" name="address" value="<%=bc.getAddress()%>"/></td>
                 
-                    <td><label>Home Number:</label></td>
+                    <td><label></label></td>
                     <td><input class="signupField" type="text" readonly id="homenum" name="homenum" value="<%=bc.getHomeNumber()%>"/></td>
                 
-                    <td><label>Work Number:</label></td>
+                    <td><label></label></td>
                     <td><input class="signupField" type="text" readonly id="worknum" name="worknum" value="<%=bc.getWorkNmber()%>"/></td>
                 
-                    <td><label>Mobile Number:</label></td>
+                    <td><label></label></td>
                     <td><input class="signupField" type="text" readonly id="mobilenum" name="mobilenum" value="<%=bc.getMobileNumber()%>"/></td>
                 </tr>
                   

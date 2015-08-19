@@ -11,6 +11,11 @@
 
 }
 
+.tfTable {
+tr:nth-child(even) {background: #CCC}
+tr:nth-child(odd) {background: #FFF}
+}
+
 .boxed {
   border: 1px solid grey ;
   box-sizing: 50px;
